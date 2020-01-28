@@ -1,0 +1,19 @@
+{
+  "name": "binary_trees_drills",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thinkful-ei-iguana/Calvin_Christina_Binary_Trees.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thinkful-ei-iguana/Calvin_Christina_Binary_Trees/issues"
+  },
+  "homepage": "https://github.com/thinkful-ei-iguana/Calvin_Christina_Binary_Trees#readme"
+}
