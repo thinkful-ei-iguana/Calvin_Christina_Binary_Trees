@@ -1,13 +1,13 @@
 const BinarySearchTree = require("./BinarySearchTree");
 
 /* SEE GIST
-https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
+
 */
 
 //2 - Remove the Root
 
 /* SEE GIST
-https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
+
 */
 
 // const drill = () => {
