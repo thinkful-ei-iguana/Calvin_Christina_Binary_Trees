@@ -1,4 +1,4 @@
-const BST = require('./BinarySearchTree');
+const BinarySearchTree = require('./BinarySearchTree');
 
 /* SEE GIST
 https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
@@ -10,10 +10,13 @@ https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
 https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
 */
 
+const drill = () => {
+  let tree = new BinarySearchTree();
+};
 //3 - Create the BST class
 
 function numberTree() {
-  let firstTree = new BST();
+  let firstTree = new BinarySearchTree();
   firstTree.insert(3, 3);
   firstTree.insert(1, 1);
   firstTree.insert(4, 4);
@@ -27,7 +30,7 @@ function numberTree() {
 }
 
 function letterTree() {
-  let lTree = new BST();
+  let lTree = new BinarySearchTree();
 
   lTree.insert('E', 'E');
   lTree.insert('A', 'A');
@@ -137,6 +140,19 @@ BT.root.right = n1;
 console.log(isBST(BT.root));
 
 //7 - 3rd Largest Node
+
+const threeLargest = (tree, state) => {
+  let nthTree = new BinarySearchTree;
+  if (nthTree.right) threeLargest(nthTree.right, state);
+  --state.n;
+  if (state.n === 0) state.result = nthTree.key;
+  if (state.result) return;
+  if (nthTree.left) threeLargest(nthTree.left, state);
+};
+  
+const state = { n: 3 };
+console.log(BinarySearchTree);
+console.log(threeLargest(drill(), state), 'result:', state.result);
 
 //8 - Balanced BST Algorithm
 
