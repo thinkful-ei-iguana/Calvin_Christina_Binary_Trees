@@ -61,6 +61,18 @@ class BinarySearchTree {
     }
   }
 
+  height = input => {
+    let left = 0;
+    let right = 0;
+
+    if (this.left != null) left = this.left.height();
+
+    if (this.right != null) right = this.right.height();
+
+    return 1 + Math.max(left, right);
+  };
+  
+  
   _replaceWith(node) {
     if (this.parent) {
       if (this == this.parent.left) {
