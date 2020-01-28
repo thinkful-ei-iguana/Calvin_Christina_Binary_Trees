@@ -6,7 +6,7 @@ class BinarySearchTree {
     this.left = null;
     this.right = null;
   }
-  
+
   insert(key, value) {
     if (this.key == null) {
       this.key = key;
@@ -14,19 +14,18 @@ class BinarySearchTree {
     } else if (key < this.key) {
       if (this.left == null) {
         this.left = new BinarySearchTree(key, value, this);
-      }
-      else {
+      } else {
         this.left.insert(key, value);
       }
     } else {
-      if(this.right == null) {
+      if (this.right == null) {
         this.right = new BinarySearchTree(key, value, this);
       } else {
         this.right.insert(key, value);
       }
     }
   }
-  
+
   find(key) {
     if (this.key == key) {
       return this.value;
@@ -35,10 +34,10 @@ class BinarySearchTree {
     } else if (key > this.key && this.right) {
       return this.right.find(key);
     } else {
-      throw new Error('Key Error');
+      throw new Error("Key Error");
     }
   }
-  
+
   remove(key) {
     if (this.key == key) {
       if (this.left && this.right) {
@@ -55,13 +54,13 @@ class BinarySearchTree {
       }
     } else if (key < this.key && this.left) {
       this.left.remove(key);
-    } else if(key > this.key && this.right) {
+    } else if (key > this.key && this.right) {
       this.right.remove(key);
     } else {
-      throw new Error('Key Error');
+      throw new Error("Key Error");
     }
   }
-  
+
   _replaceWith(node) {
     if (this.parent) {
       if (this == this.parent.left) {
@@ -78,8 +77,7 @@ class BinarySearchTree {
         this.value = node.value;
         this.left = node.left;
         this.right = node.right;
-      }
-      else {
+      } else {
         this.key = null;
         this.value = null;
         this.left = null;
@@ -87,14 +85,14 @@ class BinarySearchTree {
       }
     }
   }
-  
+
   _findMin() {
     if (!this.left) {
       return this;
     }
     return this.left._findMin();
   }
-  
+
   _findMax() {
     if (!this.right) {
       return this;
@@ -102,5 +100,5 @@ class BinarySearchTree {
     return this.right._findMax();
   }
 }
-  
+
 module.exports = BinarySearchTree;
