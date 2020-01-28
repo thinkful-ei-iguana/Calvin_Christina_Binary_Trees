@@ -1,4 +1,4 @@
-const BinarySearchTree = require('./BinarySearchTree');
+const BinarySearchTree = require("./BinarySearchTree");
 
 /* SEE GIST
 https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
@@ -10,44 +10,44 @@ https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
 https://gist.github.com/mweedman/a8f619fef6233b709c99eb1667c9d4fe
 */
 
-const drill = () => {
-  let tree = new BinarySearchTree();
-};
+// const drill = () => {
+//   let tree = new BinarySearchTree();
+// };
 //3 - Create the BST class
 
 function numberTree() {
-  let firstTree = new BinarySearchTree();
-  firstTree.insert(3, 3);
-  firstTree.insert(1, 1);
-  firstTree.insert(4, 4);
-  firstTree.insert(6, 6);
-  firstTree.insert(9, 9);
-  firstTree.insert(2, 2);
-  firstTree.insert(5, 5);
-  firstTree.insert(7, 7);
+  let tree = new BinarySearchTree();
+  tree.insert(3, 3);
+  tree.insert(1, 1);
+  tree.insert(4, 4);
+  tree.insert(6, 6);
+  tree.insert(9, 9);
+  tree.insert(2, 2);
+  tree.insert(5, 5);
+  tree.insert(7, 7);
 
-  return firstTree;
+  return tree;
 }
 
 function letterTree() {
-  let lTree = new BinarySearchTree();
+  // let tree = new BinarySearchTree();
 
-  lTree.insert('E', 'E');
-  lTree.insert('A', 'A');
-  lTree.insert('S', 'S');
-  lTree.insert('Y', 'Y');
-  lTree.insert('Q', 'Q');
-  lTree.insert('U', 'U');
-  lTree.insert('E', 'E');
-  lTree.insert('S', 'S');
-  lTree.insert('T', 'T');
-  lTree.insert('I', 'I');
-  lTree.insert('O', 'O');
-  lTree.insert('N', 'N');
+  tree.insert("E", "E");
+  tree.insert("A", "A");
+  tree.insert("S", "S");
+  tree.insert("Y", "Y");
+  tree.insert("Q", "Q");
+  tree.insert("U", "U");
+  tree.insert("E", "E");
+  tree.insert("S", "S");
+  tree.insert("T", "T");
+  tree.insert("I", "I");
+  tree.insert("O", "O");
+  tree.insert("N", "N");
 
-  lTree.remove('E');
-  // console.log('@Y: ', lTree.find('Y'));
-  return lTree;
+  tree.remove("E");
+  // console.log('@Y: ', tree.find('Y'));
+  return tree;
 }
 
 // console.log(numberTree());
@@ -79,59 +79,59 @@ function height(tree) {
     height(tree.left);
   }
 
-  return 'The height of the tree is: ' + heightCount;
+  return "The height of the tree is: " + heightCount;
 }
 
 console.log(height(numberTree()));
 
 //6 - Is it a BST?
-function BinaryTree () {
+function BinaryTree() {
   this.root = null;
 }
-  
+
 let last_logged;
-  
-function isBST (root) {
-  
-  if (root === null) { // base case
+
+function isBST(root) {
+  if (root === null) {
+    // base case
     return true;
   }
- 
+
   if (!isBST(root.left)) {
     return false;
   }
- 
+
   if (last_logged !== null && root.data <= last_logged) {
     return false;
   }
-  
-  console.log('Current Node : ', root.data);
+
+  console.log("Current Node : ", root.data);
   last_logged = root.data;
-  
+
   if (!isBST(root.right)) {
     return false;
   }
-  
+
   return true;
 }
-  
+
 // Create a Binary Tree as a sample input
 let root = {
-  data : 8,
-  left : null,
-  right : null
+  data: 8,
+  left: null,
+  right: null
 };
 let n1 = {
-  data : 10,
-  left : null,
-  right : null
+  data: 10,
+  left: null,
+  right: null
 };
 let n2 = {
-  data : 6,
-  left : null,
-  right : null
+  data: 6,
+  left: null,
+  right: null
 };
-  
+
 let BT = new BinaryTree();
 BT.root = root;
 
@@ -142,18 +142,54 @@ console.log(isBST(BT.root));
 //7 - 3rd Largest Node
 
 const threeLargest = (tree, state) => {
-  let nthTree = new BinarySearchTree;
-  if (nthTree.right) threeLargest(nthTree.right, state);
+  // let nthTree = new BinarySearchTree();
+  if (tree.right) threeLargest(tree.right, state);
   --state.n;
-  if (state.n === 0) state.result = nthTree.key;
+  if (state.n === 0) state.result = tree.key;
   if (state.result) return;
-  if (nthTree.left) threeLargest(nthTree.left, state);
+  if (tree.left) threeLargest(tree.left, state);
 };
-  
+
 const state = { n: 3 };
 console.log(BinarySearchTree);
-console.log(threeLargest(drill(), state), 'result:', state.result);
+console.log(threeLargest(numberTree(), state), "result:", state.result);
 
 //8 - Balanced BST Algorithm
 
-//9 - Are they the same BSTs?
+const isBalanced = tree => {
+  if (tree.height() < 1) {
+    return false;
+  }
+
+  let leftHeight = tree.height(tree.left);
+  let rightHeight = tree.height(tree.right);
+
+  if (leftHeight - rightHeight > 1) {
+    return false;
+  } else {
+    return true;
+  }
+};
+
+console.log(isBalanced(numberTree()));
+
+//9 - Are they the same BSTs? (O)n
+
+const matchingBST = (tree1, tree2) => {
+  if (tree1.length !== tree2.length) {
+    return false;
+  }
+
+  let sorted1 = tree1.sort();
+  let sorted2 = tree2.sort();
+
+  if (JSON.stringify(sorted1) === JSON.stringify(sorted2)) {
+    return true;
+  }
+  return false;
+};
+
+const tree1 = [3, 5, 4, 6, 1, 0, 2];
+const tree2 = [3, 1, 5, 2, 4, 6, 0];
+
+console.log(matchingBST(tree1, tree2));
